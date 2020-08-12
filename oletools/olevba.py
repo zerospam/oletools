@@ -3355,7 +3355,7 @@ class VBA_Parser(object):
                         log.debug('Found VBA compressed code at index %X' % start)
                         compressed_code = data[start:]
                         try:
-                            vba_code = decompress_stream(bytearray(compressed_code))
+                            vba_code = bytes2str(decompress_stream(bytearray(compressed_code)))
                             # TODO vba_code = self.encode_string(vba_code)
                             yield (self.filename, d.name, d.name, vba_code)
                         except Exception as exc:
